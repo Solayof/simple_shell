@@ -1,0 +1,46 @@
+#include "shell.h"
+
+/**
+ * main - shell entry point.
+ * @ac: argumrnt count.
+ * @av: commandline argument.
+ * Return: alway return 0.
+ */
+
+int main(int __attribute__((unused)) ac, char **av)
+{
+	int _status = 0;
+	ssize_t n = 0;
+	FILE *fptr;
+	char *ptr = NULL, **avv;
+	size_t i = 0, b = 0;
+
+	fptr = stream(av);
+
+	while (1)
+	{
+		i++;
+		if(isatty(STDIN_FILENO) && fptr == stdin)
+			print_str("root@shell_als# ");
+		n = getline(&ptr, &b, fptr);
+		if (n == -1)
+		{
+			if (isatty(STDIN_FILENO) && fptr == stdin)
+				_putchar('\n');
+			free(ptr);
+			fclose(fptr);
+			exit(_status);
+		}
+		fflush(fptr);
+		if (ptr && *ptr == '\n')
+		{
+			avv = input_arr(ptr, avv);
+			chck(avv, av, &_status, i);
+		}
+/*		free_av(avv);*/
+	/*	free(ptr);*/
+
+	}
+
+	return (0);
+}

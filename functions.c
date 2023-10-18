@@ -40,14 +40,15 @@ void file_error(char *av0, char *av1)
  * @av: commandline argument.
  * @st: shell status.
  * @j: shell iteration number
+ * @ptr: getline buffer.
  * Return void.
  */
 
-void chck(char **vv, char **av, int *st, size_t j)
+void chck(char **vv, char **av, char *ptr, int *st, size_t j)
 {
 	char *loc = NULL;
 
-	if (builtin(vv, av, st, j) == -1)
+	if (builtin(vv, av, ptr,  st, j) == -1)
 	{
 		loc = cmd_loc(vv[0]);
 		if (loc != NULL)

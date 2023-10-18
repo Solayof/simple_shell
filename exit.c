@@ -6,9 +6,10 @@
  * @av: command line argument Array
  * @st: pointer to exit status.
  * @i: shell iteration
+ * @ptr: getline buffer.
  * Return: nothing
  */
-int __exit(char **v, char **av, int *st, size_t i)
+int __exit(char **v, char **av, char *ptr, int *st, size_t i)
 {
 	int s = 0;
 
@@ -27,6 +28,7 @@ int __exit(char **v, char **av, int *st, size_t i)
 		*st = s;
 	}
 	free_av(v);
+	free(ptr);
 	exit(*st);
 	return (0);
 }

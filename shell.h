@@ -22,6 +22,7 @@ char *__strtok(char *s, char *dlm);
 char *_strtok(char *s, char *dlm);
 void file_error(char *av0, char *av1);
 char *dlm_trail(char *str, char *dlm);
+void lookup(char **av, char *ptr, int *st, size_t i);
 int _strcmp(char *str1, char *str2);
 char *_strcat(char *dest, char *src);
 int _strlen(char *str);
@@ -61,9 +62,9 @@ void free_path(type_path *head);
 type_path *path_list(type_path *head, char **env);
 type_path *build_env_list(char **environ, type_path *head);
 void print_env(type_path *h);
-void chck(char **p, char **av, int *_st, size_t i);
-int builtin(char **v, char **a, int *s, size_t i);
+void chck(char **p, char **av, char *ptr, int *_st, size_t i);
+int builtin(char **v, char **a, char *ptr, int *s, size_t i);
 int _input(FILE *fp, char **av, int *_status, size_t i);
-int __exit(char **v, char **av, int *st, size_t i);
+int __exit(char **v, char **av, char *ptr, int *st, size_t i);
 
 #endif

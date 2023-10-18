@@ -6,15 +6,16 @@
  * @a: command line argument.
  * @st: shell status
  * @i: shell iteration
+ * @ptr: getline buffer.
  * Return: returns 0 if it execute any builtin functions -1 if not.
  */
 
-int builtin(char **v, char **a, int *st, size_t i)
+int builtin(char **v, char **a, char *ptr, int *st, size_t i)
 {
 
 	if (strcmp(v[0], "exit") == 0)
 	{
-		__exit(v, a, st, i);
+		__exit(v, a, ptr, st, i);
 		return (0);
 	}
 	if (strcmp(v[0], "env") == 0)

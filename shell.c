@@ -18,10 +18,8 @@ int main(int __attribute__((unused)) ac, char **av)
 	while (1)
 	{
 		i++;
-
 		_input(fptr, av, &_status, i);
 
 	}
-
 	return (0);
 }

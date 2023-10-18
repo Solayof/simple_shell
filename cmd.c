@@ -29,13 +29,14 @@ type_path *path_list(type_path *head, char **env)
 
 int _input(FILE *fp, char **av, int *_st, size_t i)
 {
+	ssize_t n = 0;
 	size_t b = 0;
 	char **avv = NULL, *ptr = NULL;
 
 	if (isatty(STDIN_FILENO) && fp == stdin)
 		print_str("root@shell_alx# ");
-
-	if (getline(&ptr, &b, stdin) == -1)
+	n = getline(&ptr, &b, stdin);
+	if (n == -1)
 	{
 		if (isatty(STDIN_FILENO) && fp == stdin)
 		{
@@ -51,14 +52,11 @@ int _input(FILE *fp, char **av, int *_st, size_t i)
 	{
 		avv = input_arr(ptr, avv);
 		if (avv != NULL)
-			chck(avv, av, _st, i);
+			chck(avv, av, ptr, _st, i);
 	}
-
-
 	free_av(avv);
-	if (ptr)
-		free(ptr);
-	return (0);
+	free(ptr);
+	return (n);
 }
 
 /**
