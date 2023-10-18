@@ -51,10 +51,10 @@ int _input(FILE *fp, char **av, int *_st, size_t i)
 	if (ptr && *ptr != '\n')
 	{
 		avv = input_arr(ptr, avv);
+		free(ptr);
 		if (avv != NULL)
 			chck(avv, av, _st, i);
 	}
-	free(ptr);
 	free_av(avv);
 	return (n);
 }
