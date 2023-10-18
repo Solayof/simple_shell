@@ -1,0 +1,33 @@
+#include "shell.h"
+
+char *_strtok(char *s, const char *dlm)
+{
+	static char *str = NULL;
+	char *token = NULL;
+	int i = 0, j;
+
+	if (s != NULL)
+		str = s;
+	if (str != NULL)
+	{
+		while (str[i])
+		{
+			j= 0;
+			while (dlm[j] != '\0')
+			{
+				if (str[i] == dlm[j])
+				{
+					str[i] = '\0';
+					token = str;
+					str = &str[i + 1];
+					return token;
+				}
+				j++;
+			}
+			i++;
+		}
+		str = NULL;
+		token = str;
+	}
+	return token;
+}

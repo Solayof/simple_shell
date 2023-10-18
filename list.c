@@ -84,6 +84,7 @@ char **input_arr(char *ptr, char **av)
 		{
 			av[i] = strdup(token);
 			i++;
+
 			token = strtok(NULL, " \t\n");
 		}
 		av[i] = NULL;

@@ -41,6 +41,7 @@ int _input(FILE *fp, char **av, int *_st, size_t i)
 	{
 		if (isatty(STDIN_FILENO) && fp == stdin)
 		{
+			printf("here");
 			_putchar('\n');
 			free(ptr);
 		}
@@ -51,11 +52,14 @@ int _input(FILE *fp, char **av, int *_st, size_t i)
 	if (ptr && *ptr != '\n')
 	{
 		avv = input_arr(ptr, avv);
-		free(ptr);
 		if (avv != NULL)
 			chck(avv, av, _st, i);
 	}
+
+
 	free_av(avv);
+	if (ptr)
+		free(ptr);
 	return (n);
 }
 
