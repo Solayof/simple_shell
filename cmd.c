@@ -29,22 +29,20 @@ type_path *path_list(type_path *head, char **env)
 
 int _input(FILE *fp, char **av, int *_st, size_t i)
 {
-	ssize_t n = 0;
 	size_t b = 0;
 	char **avv = NULL, *ptr = NULL;
 
 	if (isatty(STDIN_FILENO) && fp == stdin)
 		print_str("root@shell_alx# ");
-	n = getline(&ptr, &b, fp);
 
-	if (n == -1)
+	if (getline(&ptr, &b, stdin) == -1)
 	{
 		if (isatty(STDIN_FILENO) && fp == stdin)
 		{
-			printf("here");
+
 			_putchar('\n');
-			free(ptr);
 		}
+		free(ptr);
 		fclose(fp);
 		exit(*_st);
 	}
@@ -60,7 +58,7 @@ int _input(FILE *fp, char **av, int *_st, size_t i)
 	free_av(avv);
 	if (ptr)
 		free(ptr);
-	return (n);
+	return (0);
 }
 
 /**

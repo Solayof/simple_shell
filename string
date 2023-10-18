@@ -1,0 +1,110 @@
+#include "shell.h"
+
+/**
+ * _strlen - function that find the length of string.
+ * @str: string to find the length.
+ * Return: return the string length.
+ */
+
+int _strlen(char *str)
+{
+	unsigned int len = 0;
+
+	while (str[len] != '\0')
+		len++;
+
+	return (len);
+}
+
+/**
+ * _strcat - appends src string to des string.
+ * @dest: destinction string.
+ * @src: source string.
+ * Return: returns pointer to the appended string on success.
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	int d = 0, s = 0;
+
+	/* Get destination string length */
+	while (dest[d] != '\0')
+		d++;
+
+	while (src[s] != '\0')
+	{
+		dest[d + s] = src[s];
+		s++;
+
+	}
+	dest[d+s] = '\0';
+	return (dest);
+}
+
+/**
+ * _strcmp - compares two strings
+ * @str1: first string.
+ * @str2: second string.
+ * Return: returns 0 if equal, +ve if str1 > str2, -ve if str1 < str2.
+ */
+
+int _strcmp(char *str1, char *str2)
+{
+	int i = 0, set = 0;
+
+	while (str1[i] != '\0' && set == 0)
+	{
+		set = str1[i] - str2[i];
+		i++;
+	}
+	if (str2[i] != '\0')
+		set = -1;
+
+	return (set);
+}
+
+/**
+ * _strcpy - copy string from src to dest
+ * @dest: holds the copy of src
+ * @src: string to copy
+ * Return: returns pointer tothe copied of src
+ */
+
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
+
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+
+/**
+* _strdup - duplicate a string.
+* @str: string to duplicate.
+* Return: returns pointer to the memory location alloted for the duplicate.
+*/
+
+char *_strdup(char *str)
+{
+	int i = 0;
+	char *ptr = NULL;
+
+	while (str[i] != '\0')
+		i++;
+
+	ptr = malloc(sizeof(char) * (i + 1));
+	if (ptr == NULL)
+		return (NULL);
+
+	for (i = 0; str[i] != '\0'; i++)
+		ptr[i] = str[i];
+	str[i] = '\0';
+
+	return (ptr);
+}
