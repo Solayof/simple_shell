@@ -1,1 +1,6 @@
-Thank you very much my partner for this amazing adventure with simple_shell
+#Simple Shell Project
+The project by Moses Solomon Ayofemi and Ganiyu Lasisi Adebayo Adebayo
+# Compilation
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+```
