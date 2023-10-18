@@ -1,4 +1,4 @@
-#Simple Shell Project
+# Simple Shell Project
 The project by Moses Solomon Ayofemi and Ganiyu Lasisi Adebayo Adebayo
 # Compilation
 ```
